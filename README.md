@@ -1,1 +1,1 @@
-# kayabeadmin.com
+# kayabe.com
