@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="Styles/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="Scripts/home.js"></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="menu-item" id="fares">Fares</div>
+        <div class="menu-item" id="terminals">Terminals</div>
+        <div class="menu-item" id="reports">Reports</div>
+        <div class="menu-item" id="searched-places">Most Searched Place</div>
+        <div class="menu-item" id="registered-users">Registered Users</div>
+        <div class="menu-item" id="monthly-yearly-visits">Monthly/Yearly Visits</div>
+    </div>
+
+
+
+    <div class="content">
+       
+        <div id="fares-content" class="content-section">
+            <h1>Fares</h1>
+            <div class="fares-container">
+                <div class="fare-edit-section">
+                    <div class="fare-title">Edit Fare:</div>
+                    <input type="text" class="adjust-fare-input" id="global-edit-input" disabled>
+                    <button class="edit-save-button" id="global-edit-save-button" disabled>Save</button>
+                    <button class="edit-save-button" id="edit-button">Edit</button>
+                </div>
+                <table id="fares-table" class="fares-table">
+                    <thead>
+                        <tr>
+                            <th>Jeepney Route</th>
+                            <th>Fare</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Fare rows will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div id="terminals-content" class="content-section">
+            <h1 class="section-title">Terminals</h1>
+            <div id="terminals-table-container"></div>
+        </div>
+        
+        
+
+        <div id="reports-content" class="content-section">
+            <h1>Reports</h1>
+            <div>
+                <label for="filter-feedback">Filter Feedback:</label>
+                <input type="text" id="filter-feedback" placeholder="Enter user feedback...">
+            </div>
+            <div>
+                <label for="filter-rating">Filter by Rating:</label>
+                <select id="filter-rating">
+                    <option value="">All Ratings</option>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+            </div>
+            <div id="feedback-list" class="feedback-grid"></div>
+        </div>
+        
+
+        <div id="searched-places-content">
+            <h1>Most Search Place</h1>
+            <div>
+                <label for="months">Month:</label>
+                <select id="months" name="months">
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                  </select>
+
+                <label for="years">End Date:</label>
+                <select id="years" name="years">
+                    <!-- Options will be generated dynamically -->
+                  </select>
+                  <button id="apply-filter-button" style="background: none; border: 1px solid rgb(27, 143, 27); padding: 10px 20px; cursor: pointer;">Apply</button>
+            </div>
+            <p id="emptyPlaces"></p>
+            <div id="searched-places-pie-chart-container">
+                <canvas id="searchPieChart"></canvas>
+            </div>
+            <div id="tourist-spot-chart-container">
+                <canvas id="touristSpotBarChart"></canvas>
+            </div>
+            <div id="most-searched-places-content">
+                <canvas id="mostSearchedPlacesBarChart"></canvas>
+            </div>
+            
+        </div>        
+        
+        <div id="registered-users-content" class="content-section">
+            <h1>Registered Users</h1>
+            <div id="user-count" class="user-count">User Count: 0</div>
+            <div id="registered-users-container" class="registered-users-container"></div>
+        </div>
+
+        <div id="monthly-yearly-visits-content" class="content-section">
+            <h1>Monthly or Yearly Visits</h1>
+            <div class="filter-options">
+                <label for="filter-visit-year">Select Year:</label>
+                <select id="filter-visit-year">
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                </select>
+            </div>
+            <table id="monthlyYearlyVisitsTable">
+                <thead>
+                    <tr>
+                        <th>Place</th>
+                        <th>January</th>
+                        <th>February</th>
+                        <th>March</th>
+                        <th>April</th>
+                        <th>May</th>
+                        <th>June</th>
+                        <th>July</th>
+                        <th>August</th>
+                        <th>September</th>
+                        <th>October</th>
+                        <th>November</th>
+                        <th>December</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Table rows will be added dynamically using JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
